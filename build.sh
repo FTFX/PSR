@@ -9,4 +9,4 @@ mkdir Build
 cd Build
 cmake ${BUILD_TARGET} ..
 make
-make test
+#make test
