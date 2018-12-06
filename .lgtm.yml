@@ -1,0 +1,14 @@
+path_classifiers:
+  test:
+    - "*/*/*.c"
+  docs:
+    - README.md
+    
+extraction:
+  cpp:
+    prepare:
+      packages:
+        - g++-6
+    index:
+      build_command:
+        - make -j2 -s
