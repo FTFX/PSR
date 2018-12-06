@@ -1,5 +1,5 @@
 #!/bin/bash
-ls -l
+
 BUILD_TARGET = "-DALGORITHM_LinkedList=ON \
                 -DALGORITHM_SequenceList=ON \
                 -DALGORITHM_Queue=ON \
