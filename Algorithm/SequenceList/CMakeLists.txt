@@ -1,0 +1,1 @@
+add_executable(SequenceList main.c)
