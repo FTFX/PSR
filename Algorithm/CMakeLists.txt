@@ -1,4 +1,3 @@
-cmake_minimum_required (VERSION 2.6)
 project (Algorithm)
 
 option (ALGORITHM_LinkedList "Achievement of Linked List")
