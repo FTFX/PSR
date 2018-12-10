@@ -8,4 +8,5 @@ $BUILD_TARGET = "-DALGORITHM_LinkedList=ON \
 mkdir Build
 cd Build
 cmake ${BUILD_TARGET} ..
-make
+make -v
+make VERBOSE=1
