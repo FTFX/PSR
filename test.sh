@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "This is test."
+make test
