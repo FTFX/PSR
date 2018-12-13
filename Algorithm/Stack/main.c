@@ -38,13 +38,13 @@ int main()
 	{
 		printStack(&obj);                      // Print the stack first;
 		printf("\n1.Push 2.Pop 3.Exit\n>> ");
-		scanf_s("%d", &choice);
+		scanf("%d", &choice);
 		switch (choice)
 		{
 		// Option Push;
 		case 1:
 			printf("Push: ");
-			scanf_s("%d", &target_data);
+			scanf("%d", &target_data);
 			pushData(&obj, target_data);
 			break;
 		// Option Pop;

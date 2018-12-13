@@ -25,21 +25,6 @@ jobs:
     - stage: build
       name: "Build"
       script: ./build.sh
-    - stage: test
-      name: "Test"
-      script: ./test.sh
-    - stage: deploy
-      name: "Release"
-      deploy:
-        provider: releases
-        api_key: ""
-        file: ""
-        skip_cleanup: true
-        on:
-          tags: true
 
 stages:
   - build
-  - test
-  - name: deploy
-    if: branch == master
