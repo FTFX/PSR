@@ -28,24 +28,24 @@ int main()
 	{
 		printList(head);
 		printf("\n1.Add 2.Modify 3.Delete 4.Exit\n");
-		scanf_s("%d", &choice);
+		scanf("%d", &choice);
 		switch (choice)
 		{
 		case 1:
 			printf("add: ");
-			scanf_s("%d", &target_data);
+			scanf("%d", &target_data);
 			addData(target_data, head);
 			break;
 
 		case 2:
 			printf("mod: ");
-			scanf_s("%d%d", &target_obj, &target_data);
+			scanf("%d%d", &target_obj, &target_data);
 			modifyData(target_obj, target_data, head);
 			break;
 
 		case 3:
 			printf("del: ");
-			scanf_s("%d", &target_obj);
+			scanf("%d", &target_obj);
 			deleteData(target_obj, head);
 			break;
 

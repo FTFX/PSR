@@ -20,30 +20,30 @@ int main()
 	{
 		printList(list);
 		printf("What you want to do?\n1.Add 2.Modify 3.Delete 4.Search 5.Exit\n> ");
-		scanf_s("%d", &choice);
+		scanf("%d", &choice);
 		switch (choice)
 		{
 		case 1:
 			printf("add: ");
-			scanf_s("%d", &target_data);
+			scanf("%d", &target_data);
 			addData(target_data, list);
 			break;
 
 		case 2:
 			printf("mod: ");
-			scanf_s("%d%d", &target_obj, &target_data);
+			scanf("%d%d", &target_obj, &target_data);
 			modifyData(target_obj, target_data, list);
 			break;
 
 		case 3:
 			printf("del: ");
-			scanf_s("%d", &target_obj);
+			scanf("%d", &target_obj);
 			deleteData(target_obj, list);
 			break;
 
 		case 4:
 			printf("sch: ");
-			scanf_s("%d", &target_obj);
+			scanf("%d", &target_obj);
 			searchData(target_obj, list);
 			system("pause");
 			break;
