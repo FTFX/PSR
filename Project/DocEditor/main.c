@@ -4,32 +4,49 @@
 #include "words.h"
 #include "dataio.h"
 #include "display.h"
-#define DOCLEN 100
+#define DOCLEN 500
 
 int main(int argc, char *argv[])
 {
 	int i = 0;
+	int contlen = 0;
 	int user_action = 0;
 	int state_save = 0;
 	char doc[DOCLEN] = { 0 };
 	struct words resault[DOCLEN];
 	memset(resault, 0, sizeof(resault));
 
+	// import document from file
 	if (argc > 1)
 	{
-		while (i < argc)
-		{
-			printf("%s", argv[i]);
-		}
-
-		assimilateData(doc, DOCLEN);
+		importData(doc, DOCLEN, argv[1]);
 	}
 
+	// user interface part
 	while (user_action != 4)
 	{
-		displayData(doc);
+		displayData(doc, DOCLEN);
+
+		// reset resault array
 		memset(resault, 0, sizeof(resault));
 		analyzeData(doc, resault);
+
+		// print resaults
+		for (i = 0; resault[i].character != 0; i++)
+		{
+			if (resault[i].character == '\n')
+			{
+				printf("\\n:%d", resault[i].frequence);
+			}
+			else
+			{
+				printf("%c:%d", resault[i].character, resault[i].frequence);
+			}
+			printf("%c", (i + 1) % 3 ? '\t' : '\n');
+		}
+		printf("%c", i % 3 ? '\n' : ' ');
+
+		// user interaction part
 		displayMenu();
 		scanf("%d", &user_action);
 		getchar();
@@ -40,32 +57,45 @@ int main(int argc, char *argv[])
 			state_save = 1;
 			break;
 		case 2:
-			memset(resault, 0, sizeof(resault));
-			analyzeData(doc, resault);
+
 			break;
 		case 3:
-			saveData(doc);
+			if (argc > 1)
+			{
+				saveData(doc, DOCLEN, argv[1]);
+			}
+			else
+			{
+				saveData(doc, DOCLEN, "document.txt");
+			}
 			state_save = 0;
 			break;
 		case 4:
 			if (state_save)
 			{
 				printf("Do you want to save your document? (Y/N) ");
-				scanf("%c", &user_action);
+				scanf("%c", (char*)&user_action);
 				if (user_action == 'Y' || user_action == 'y')
 				{
-					saveData(doc);
+					if (argc > 1)
+					{
+						saveData(doc, DOCLEN, argv[1]);
+					}
+					else
+					{
+						saveData(doc, DOCLEN, "document.txt");
+					}
 				}
 				user_action = 4;
 			}
 			break;
 		default:
 			printf("Invalid input.");
+			system("pause");
 			break;
 		}
 		system("cls");
 	}
-
     
     return 0;
 }
