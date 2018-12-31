@@ -12,11 +12,13 @@ int analyzeData(char *doc, struct words *resault)
 	{
 		for (j = 0; j < 100; j++)
 		{
+			// existing character
 			if (resault[j].character == doc[i])
 			{
 				resault[j].frequence++;
 				break;
 			}
+			// new character
 			if (resault[j].character == 0)
 			{
 				resault[j].character = doc[i];
@@ -25,18 +27,6 @@ int analyzeData(char *doc, struct words *resault)
 			}
 		}
 	}
-	printf("\n");
-	for (i = 0; resault[i].character != 0; i++)
-	{
-		if (resault[i].character == '\n')
-		{
-			printf("\\n:%d", resault[i].frequence);
-		}
-		else
-		{
-			printf("%c:%d", resault[i].character, resault[i].frequence);
-		}
-		printf("%c", i % 3 ? '\t' : '\n');
-	}
+
 	return 0;
 }

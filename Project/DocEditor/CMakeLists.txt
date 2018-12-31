@@ -1,6 +1,8 @@
 project (DocEditor)
 
-add_executable(DocEditor main.c)
+aux_source_directory(. sourcefile)
+add_executable(DocEditor ${sourcefile})
+include_directories(./)
 
 macro (DocEditorTest arg result)
   add_test(NAME DocEditor${arg} COMMAND DocEditor ${arg})
@@ -9,5 +11,5 @@ macro (DocEditorTest arg result)
     PASS_REGULAR_EXPRESSION ${result})
 endmacro (DocEditorTest)
 
-DocEditorTest (111 "111")
-DocEditorTest (222 "222")
+#DocEditorTest (111 "111")
+#DocEditorTest (222 "222")
