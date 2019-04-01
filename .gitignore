@@ -333,3 +333,9 @@ ASALocalRun/
 
 # CMake Build
 Build/
+
+# Java build class
+*.class
+
+# Visual Studio Code folder
+.vscode
