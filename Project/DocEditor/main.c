@@ -53,11 +53,12 @@ int main(int argc, char *argv[])
 		switch (user_action)
 		{
 		case 1:
-			editData(doc, DOCLEN);
+			editData(doc, DOCLEN, 'w');
 			state_save = 1;
 			break;
 		case 2:
-
+			editData(doc, DOCLEN, 'd');
+			state_save = 1;
 			break;
 		case 3:
 			if (argc > 1)
