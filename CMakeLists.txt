@@ -3,4 +3,4 @@ project (PSR)
 include(CTest)
 
 add_subdirectory (Algorithm)
-add_subdirectory (Project)
+add_subdirectory (C)
