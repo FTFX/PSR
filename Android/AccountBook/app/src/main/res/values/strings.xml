@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Account Book</string>
+    <string name="your_expenses_this_month">Your expenses this month</string>
+    <string name="add">Add</string>
+    <string name="delete">Delete</string>
+    <string name="modify">Modify</string>
+    <string name="search">Search</string>
+    <string name="item">Item</string>
+    <string name="expense">Expense</string>
+    <string name="quota">Quota</string>
+    <string name="cancel">Cancel</string>
+    <string name="untitled">Untitled</string>
+    <string name="operation">Operation</string>
+    <string name="refresh">Refresh</string>
+
+    <string-array name="operations">
+        <item>Edit</item>
+        <item>Delete</item>
+    </string-array>
+</resources>

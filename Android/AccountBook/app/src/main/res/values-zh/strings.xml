@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">账簿</string>
+    <string name="your_expenses_this_month">您本月的花销</string>
+    <string name="add">添加</string>
+    <string name="delete">删除</string>
+    <string name="modify">修改</string>
+    <string name="search">搜索</string>
+    <string name="item">条目</string>
+    <string name="expense">花销</string>
+    <string name="quota">配额</string>
+    <string name="cancel">取消</string>
+    <string name="operation">操作</string>
+    <string name="refresh">刷新</string>
+
+    <string-array name="operations">
+        <item>编辑</item>
+        <item>删除</item>
+    </string-array>
+    <string name="untitled">未命名</string>
+</resources>
