@@ -25,10 +25,20 @@ public class AddDialog extends DialogFragment {
                         EditText et_add_name = DialogView.findViewById(R.id.et_add_name);
                         EditText et_add_expense = DialogView.findViewById(R.id.et_add_expense);
                         EditText et_add_quota = DialogView.findViewById(R.id.et_add_quota);
+                        String name = getString(R.string.untitled);
+                        if (!et_add_name.getText().toString().equals("")) {
+                            name = et_add_name.getText().toString();
+                        }
+                        double expense = 0.0;
+                        if (!et_add_expense.getText().toString().equals("")) {
+                            expense = Double.parseDouble(et_add_expense.getText().toString());
+                        }
+                        double quota = 0.0;
+                        if (!et_add_quota.getText().toString().equals("")) {
+                            quota = Double.parseDouble(et_add_quota.getText().toString());
+                        }
                         final MainActivity activity = (MainActivity)getActivity();
-                        activity.item.addItem(et_add_name.getText().toString(),
-                                Double.parseDouble(et_add_expense.getText().toString()),
-                                Double.parseDouble(et_add_quota.getText().toString()));
+                        activity.item.addItem(name, expense, quota);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
