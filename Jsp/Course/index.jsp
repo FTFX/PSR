@@ -18,7 +18,7 @@
     </head>
     <body>
         <h2><%="Hello " + user%></h2>
-        <a href="modifyuserui.jsp?username=${user}">修改密码</a>
+        <a href="modifyuserui.jsp?username='<%=user%>'">修改密码</a>
         <a href="logout.jsp">退出</a><br><br>
 
         <sql:setDataSource var="database" 
