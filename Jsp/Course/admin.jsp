@@ -103,6 +103,7 @@
         <tr>
             <td><input type="text" name="username"></td>
             <td><input type="text" name="password"></td>
+            <td>N/A</td>
             <td colspan="2"><input type="submit" value="添加"></td>
         </tr>
         <form>
