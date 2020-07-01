@@ -22,7 +22,7 @@
             password="root"/>
         
         <h3>课程</h3>
-        <sql:query dataSource="${database}" var="result">
+        <sql:query dataSource="${database}" var="course">
             SELECT * FROM course;
         </sql:query>
         <sql:query dataSource="${database}" var="choose">
@@ -37,7 +37,7 @@
             <th>选课人数</th>
             <th colspan="2">操作</th>
         </tr>
-        <c:forEach var="row" items="${result.rows}">
+        <c:forEach var="row" items="${course.rows}">
         <tr>
             <td><c:out value="${row.course}"/></td>
             <td><c:out value="${row.time}"/></td>
@@ -50,7 +50,7 @@
                         <c:set var="choosecount" value="${choosecount + 1}"/>
                     </c:if>
                 </c:forEach>
-                <a href="showchoose.jsp?cid=${row.cid}"><c:out value="${choosecount}"/></a>
+                <a href="showchooseforstudent.jsp?cid=${row.cid}"><c:out value="${choosecount}"/></a>
             </td>
             <td><a href="modifycourseui.jsp?cid=${row.cid}">修改</a></td>
             <td><a href="deletecourse.jsp?cid=${row.cid}">删除</a></td>
@@ -69,21 +69,31 @@
         </table>
 
         <h3>学生</h3>
-        <sql:query dataSource="${database}" var="result">
+        <sql:query dataSource="${database}" var="user">
             SELECT * FROM user;
         </sql:query>
         <table border="1" width="100%">
         <tr>
             <th>学号</th>
             <th>密码</th>
+            <th>已选课程</th>
             <th colspan="2">操作</th>
         </tr>
         <c:set var="admin" value="admin"/>
-        <c:forEach var="row" items="${result.rows}">
+        <c:forEach var="row" items="${user.rows}">
         <c:if test="${row.username != admin}">
         <tr>
             <td><c:out value="${row.username}"/></td>
             <td><c:out value="${row.password}"/></td>
+            <td>
+                <c:set var="choosecount" value="0"/>
+                <c:forEach var="chooserow" items="${choose.rows}">
+                    <c:if test="${chooserow.username == row.username}">
+                        <c:set var="choosecount" value="${choosecount + 1}"/>
+                    </c:if>
+                </c:forEach>
+                <a href="showchooseforcourse.jsp?username=${row.username}"><c:out value="${choosecount}"/></a>
+            </td>
             <td><a href="modifyuserui.jsp?username=${row.username}">修改</a></td>
             <td><a href="deleteuser.jsp?username=${row.username}">删除</a></td>
         </tr>
