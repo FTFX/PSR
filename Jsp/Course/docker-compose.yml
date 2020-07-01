@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  app:
+    image: tomcat
+    restart: always
+    ports: 
+      - 0.0.0.0:8080:8080
+    volumes: 
+      - D:\Tutorial\psr\jsp\Course\:/usr/local/tomcat/webapps/course
+    depends_on: 
+      - db
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8090:8080
+
+volumes:
+  db:
+    name: course_db
