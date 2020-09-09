@@ -68,6 +68,13 @@
         app:layout_constraintGuide_percent="0.32831737" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.37" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_horizontal_6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,6 +87,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_2"
@@ -121,45 +142,49 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_1"
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_3" />
 
-    <TableLayout
-        android:id="@+id/tb_items"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_items"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:stretchColumns="*"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_6"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_2"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_1"
-        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_5">
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-        <TableRow
-            android:id="@+id/tb_header"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_th_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_1"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_5" />
 
-            <TextView
-                android:id="@+id/tb_item_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/item"
-                android:textSize="18sp" />
+    <TextView
+        android:id="@+id/tv_th_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/expense"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_5" />
 
-            <TextView
-                android:id="@+id/tb_item_expense"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/expense"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tb_item_quota"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/quota"
-                android:textSize="18sp" />
-        </TableRow>
-
-    </TableLayout>
+    <TextView
+        android:id="@+id/tv_th_quota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quota"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,9 +12,16 @@
     <string name="untitled">Untitled</string>
     <string name="operation">Operation</string>
     <string name="refresh">Refresh</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="user_already_exist">User Already Exist</string>
+    <string name="password_incorrect">Password Incorrect</string>
 
     <string-array name="operations">
         <item>Edit</item>
         <item>Delete</item>
     </string-array>
+
 </resources>

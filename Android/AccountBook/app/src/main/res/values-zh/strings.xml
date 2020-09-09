@@ -12,6 +12,10 @@
     <string name="cancel">取消</string>
     <string name="operation">操作</string>
     <string name="refresh">刷新</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
 
     <string-array name="operations">
         <item>编辑</item>

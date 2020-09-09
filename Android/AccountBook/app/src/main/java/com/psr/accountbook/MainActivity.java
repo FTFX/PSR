@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,10 +25,13 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    ItemViewModel item;
-    TableLayout table;
     int ItemId;
+    int ItemPosition;
+    ItemViewModel item;
     List<Item> allItemsInList;
+    List<Item> searchResult;
+    RecyclerView rv_items;
+    ItemViewAdapter itemViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,39 +39,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final TextView tv_costs = findViewById(R.id.tv_costs);
+        rv_items = findViewById(R.id.rv_items);
+        itemViewAdapter = new ItemViewAdapter(this);
+        rv_items.setLayoutManager(new LinearLayoutManager(this));
+        rv_items.setAdapter(itemViewAdapter);
 
         item = ViewModelProviders.of(this).get(ItemViewModel.class);
-        item.getAllItemsLiveData().observe(this, new Observer<List<Item>>() {
+        item.getAllItems().observe(this, new Observer<List<Item>>() {
             @Override
             public void onChanged(final List<Item> items) {
                 allItemsInList = items;
-                table = findViewById(R.id.tb_items);
-                int childCount = table.getChildCount();
-                if (childCount > 1) {
-                    table.removeViews(1, childCount - 1);
-                }
-
-                for (final Item i : items) {
-                    TextView tv_name = new TextView(MainActivity.this);
-                    tv_name.setText(i.getName());
-                    TextView tv_expense = new TextView(MainActivity.this);
-                    tv_expense.setText(String.format(Locale.US, "%.2f", i.getExpense()));
-                    TextView tv_quota = new TextView(MainActivity.this);
-                    tv_quota.setText(String.format(Locale.US, "%.2f", i.getQuota()));
-                    TableRow row = new TableRow(MainActivity.this);
-                    row.addView(tv_name);
-                    row.addView(tv_expense);
-                    row.addView(tv_quota);
-                    row.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            ItemId = i.getId();
-                            DialogFragment menuDialog = new MenuDialog();
-                            menuDialog.show(getSupportFragmentManager(), "Menu");
-                        }
-                    });
-                    table.addView(row);
-                }
+                searchResult = items;
+                itemViewAdapter.setAllItems(items);
+                itemViewAdapter.notifyDataSetChanged();
                 tv_costs.setText(String.valueOf(calculateExpenses(items)));
             }
         });
@@ -93,32 +78,9 @@ public class MainActivity extends AppCompatActivity {
         btn_ref.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int childCount = table.getChildCount();
-                if (childCount > 1) {
-                    table.removeViews(1, childCount - 1);
-                }
-
-                for (final Item i : allItemsInList) {
-                    TextView tv_name = new TextView(MainActivity.this);
-                    tv_name.setText(i.getName());
-                    TextView tv_expense = new TextView(MainActivity.this);
-                    tv_expense.setText(String.format(Locale.US, "%.2f", i.getExpense()));
-                    TextView tv_quota = new TextView(MainActivity.this);
-                    tv_quota.setText(String.format(Locale.US, "%.2f", i.getQuota()));
-                    TableRow row = new TableRow(MainActivity.this);
-                    row.addView(tv_name);
-                    row.addView(tv_expense);
-                    row.addView(tv_quota);
-                    row.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            ItemId = i.getId();
-                            DialogFragment menuDialog = new MenuDialog();
-                            menuDialog.show(getSupportFragmentManager(), "Menu");
-                        }
-                    });
-                    table.addView(row);
-                }
+                searchResult = allItemsInList;
+                itemViewAdapter.setAllItems(allItemsInList);
+                itemViewAdapter.notifyDataSetChanged();
                 tv_costs.setText(String.valueOf(calculateExpenses(allItemsInList)));
             }
         });
