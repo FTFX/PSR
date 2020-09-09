@@ -19,7 +19,7 @@
             password="root"/>
 
         <sql:query dataSource="${database}" var="result">
-            SELECT * FROM user WHERE username=<%= username %>;
+            SELECT * FROM user WHERE username='<%= username %>';
         </sql:query>
 
         <c:forEach var="row" items="${result.rows}">

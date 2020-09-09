@@ -54,5 +54,5 @@
     coursestatement.close();
     connection.close();
 
-    response.sendRedirect("admin.jsp");
+    response.sendRedirect("index.jsp");
 %>
